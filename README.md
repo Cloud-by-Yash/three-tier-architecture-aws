@@ -1,2 +1,15 @@
 # three-tier-architecture-aws
-Implementation of a 3-tier architecture on AWS with VPC, EC2, and RDS.
+
+
+This project demonstrates the implementation of a three-tier architecture on AWS, which separates the application into three layers:
+
+Presentation Layer → Web/App servers (EC2)
+
+Application Layer → Application logic (private EC2)
+
+Database Layer → Amazon RDS
+
+
+# Architecture Diagram 
+
+

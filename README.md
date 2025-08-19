@@ -10,6 +10,9 @@ Application Layer → Application logic (private EC2)
 Database Layer → Amazon RDS
 
 
-# Architecture Diagram 
+
+## 📌 Architecture Diagram  
+
+![Architecture Diagram](architecture-diagram.png)
 
 

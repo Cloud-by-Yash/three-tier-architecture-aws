@@ -16,7 +16,7 @@ Database Layer → Amazon RDS
 ![Architecture Diagram](architecture-diagram.png)
 
 
-# Networking and security setup :
+## Networking and security setup :
 
 
 1. VPC (Virtual Private Cloud)
@@ -89,6 +89,33 @@ Database Layer → Amazon RDS
    Inbound: Allow MySQL/Aurora port (3306) only from App Tier SG.
 
    Outbound: Restricted (default).
+
+
+## S3 Bucket Setup :
+
+   Created an S3 bucket to store application code/artifacts.
+
+   Uploaded the deployment package (e.g., index.html, application zip/jar, etc.) to the bucket.
+
+   This bucket will act as the source for EC2 instances during deployment.
+
+## IAM Role Setup for EC2 :
+
+   To keep EC2 instances in private subnets secure and functional, IAM roles are attached instead of using a Bastion Host.
+
+   AmazonSSMManagedInstanceCore → Allows secure connection to EC2 via AWS Systems Manager Session Manager (no SSH or public access needed).
+
+   AmazonS3ReadOnlyAccess → Grants EC2 permission to read code/artifacts from S3 during deployment.
+
+## Flow :
+
+   Application code is stored in the S3 bucket.
+
+   EC2 (Web/App tier) with the IAM Role pulls code from S3.
+
+   Admins connect to EC2 securely using SSM Session Manager (no public IP or jump server required).
+
+This setup is secure, simple, and production-ready.
 
 
 
